@@ -14,4 +14,54 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+  <dependencies>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId> <!--підключаємо Selenium -->
+      <artifactId>selenium-java</artifactId>
+      <version>4.29.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId> <!-- Вебдрайвер менеджер для автоматичного викачування і налаштування драйвера -->
+      <artifactId>webdrivermanager</artifactId>
+      <version>5.6.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.10.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>                 <!-- для логування -->
+      <artifactId>slf4j-api</artifactId>
+      <version>2.0.9</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>          <!-- для логування -->
+      <artifactId>lombok</artifactId>
+      <version>1.18.30</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>              <!-- для логування -->
+      <artifactId>logback-classic</artifactId>
+      <version>1.4.14</version>
+    </dependency>
+
+    <!-- для роботи з Json файлами -->
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20241224</version>
+    </dependency>
+
+  </dependencies>
+
+
 </project>
