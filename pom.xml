@@ -12,6 +12,8 @@
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <slf4j.simpleLogger.defaultLogLevel>info</slf4j.simpleLogger.defaultLogLevel>
   </properties>
 
   <dependencies>

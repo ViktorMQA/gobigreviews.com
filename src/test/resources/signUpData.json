@@ -1,0 +1,13 @@
+{
+  "signUp": {
+    "name": "someName",
+    "email": "someEmail",
+    "password": "somePassword",
+    "confirmPassword": "somePassword"
+  }
+}
+
+
+
+
+
