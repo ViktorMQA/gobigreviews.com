@@ -1,9 +1,9 @@
 {
   "signUp": {
     "name": "someName",
-    "email": "someEmail",
-    "password": "somePassword",
-    "confirmPassword": "somePassword"
+    "email": "email",
+    "password": "passPass1!",
+    "confirmPassword": "passPass1!"
   }
 }
 

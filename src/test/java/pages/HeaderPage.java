@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +13,10 @@ public class HeaderPage extends BasePage{
 		super(driver);
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
+		waitPageLoaded(By.cssSelector(hederPageSelector));
 	}
+
+	String hederPageSelector = "header.foxapp-header";
 
 	@FindBy(css = "#main_menu a[href='#slide']")
 	public WebElement homeLink;
@@ -28,10 +32,16 @@ public class HeaderPage extends BasePage{
 	public WebElement tryForFreeLink;
 	@FindBy (css = "#main_menu a[href='/login']")
 	public WebElement signInLink;
+	@FindBy(css = "button.btn.btn-user")
+	public WebElement profileButton;
 
-	public SignInPage getSignInPage(){
+	public SignInPage getSignInPage(WebDriver driver){
 		signInLink.click();
 		return new SignInPage(driver);
+	}
+
+	public boolean isRegistrationSuccessful(){
+		return profileButton.isDisplayed();
 	}
 
 
