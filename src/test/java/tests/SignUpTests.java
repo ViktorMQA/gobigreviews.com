@@ -1,9 +1,10 @@
 package tests;
 
 import base.BaseTest;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import java.io.IOException;
 import org.json.JSONObject;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,7 +12,10 @@ import org.testng.asserts.SoftAssert;
 import pages.HeaderPage;
 import pages.SignInPage;
 import pages.SignUpPage;
+import utils.DataGenerator;
 
+@Epic("User registration")
+@Feature("Registration Page")
 public class SignUpTests extends BaseTest {
 
 	private String name;
@@ -20,6 +24,9 @@ public class SignUpTests extends BaseTest {
 	private String password;
 	private String confirmPassword;
 
+//	private Faker faker;
+
+
 	@BeforeMethod
 	public void precondition() throws IOException {
 		setUp();
@@ -27,12 +34,14 @@ public class SignUpTests extends BaseTest {
 		SignInPage signIn = header.getSignInPage(driver);
 		SignUpPage signUp = signIn.getSignUpPage(driver);
 
+
 		JSONObject jsonObject = signUp.getJsonObject("src/test/resources/signUpData.json");
 		JSONObject signUpData = jsonObject.getJSONObject("signUp");
-		name = signUpData.getString("name");
+		name = signUpData.getString("fullName");
 		email = signUpData.getString("email");
 		password = signUpData.getString("password");
 		confirmPassword = signUpData.getString("confirmPassword");
+
 
 	}
 
@@ -41,14 +50,16 @@ public class SignUpTests extends BaseTest {
 		quit();
 	}
 
+
 	@Test
 	public void checkingSignUpRegistration() throws InterruptedException {
 		SoftAssert softAssert = new SoftAssert();
 		SignUpPage signUp = new SignUpPage(driver);
-		softAssert.assertTrue(signUp.doRegistration(driver, name, email + "+" + signUp.generateFiveRandomDigits() + "@email.net",
+		String generatedEmail = email + "+" + signUp.generateFiveRandomDigits() + "@email.net";
+		softAssert.assertTrue(signUp.doRegistration(driver, name, generatedEmail,
 				password, confirmPassword).isRegistrationSuccessful(), "The registration is unsuccessful. profile element ISN'T visible after registration"
 		);
-		System.out.println(name + " " + email + "+" + signUp.generateFiveRandomDigits() + "@email.net" + " " + password + " " + confirmPassword);
+		System.out.println(name + " " + generatedEmail + " " + password + " " + confirmPassword);
 		softAssert.assertAll();
 	}
 
