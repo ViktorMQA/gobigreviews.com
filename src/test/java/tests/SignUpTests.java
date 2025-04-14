@@ -3,6 +3,11 @@ package tests;
 import base.BaseTest;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
+import io.qameta.allure.Stories;
+import io.qameta.allure.Story;
 import java.io.IOException;
 import org.json.JSONObject;
 import org.testng.annotations.AfterMethod;
@@ -24,10 +29,10 @@ public class SignUpTests extends BaseTest {
 	private String password;
 	private String confirmPassword;
 
-//	private Faker faker;
 
 
 	@BeforeMethod
+	@Step("Setup test precondition")
 	public void precondition() throws IOException {
 		setUp();
 		HeaderPage header = new HeaderPage(driver);
@@ -37,7 +42,7 @@ public class SignUpTests extends BaseTest {
 
 		JSONObject jsonObject = signUp.getJsonObject("src/test/resources/signUpData.json");
 		JSONObject signUpData = jsonObject.getJSONObject("signUp");
-		name = signUpData.getString("fullName");
+		name = signUpData.getString("name");
 		email = signUpData.getString("email");
 		password = signUpData.getString("password");
 		confirmPassword = signUpData.getString("confirmPassword");
@@ -45,13 +50,17 @@ public class SignUpTests extends BaseTest {
 
 	}
 
+
 	@AfterMethod(alwaysRun = true)
+	@Step("Clear test in the end")
 	public void driverClose(){
 		quit();
 	}
 
 
-	@Test
+	@Test(description = "checking successful registration")
+	@Severity(SeverityLevel.CRITICAL)
+	@Story("Implement registration form")
 	public void checkingSignUpRegistration() throws InterruptedException {
 		SoftAssert softAssert = new SoftAssert();
 		SignUpPage signUp = new SignUpPage(driver);
@@ -63,7 +72,9 @@ public class SignUpTests extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test
+	@Test(description = "checking required fields")
+	@Severity(SeverityLevel.NORMAL)
+	@Story("Implement registration form")
 	public void checkingSignUpFieldsIsRequired() throws InterruptedException {
 		SoftAssert softAssert = new SoftAssert();
 		SignUpPage signUp = new SignUpPage(driver);

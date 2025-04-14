@@ -13,8 +13,9 @@
     <maven.compiler.target>21</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <!--прибираємо інфо логи -->
-    <slf4j.simpleLogger.defaultLogLevel>info</slf4j.simpleLogger.defaultLogLevel>
+<!--    &lt;!&ndash;прибираємо інфо логи &ndash;&gt;-->
+<!--    <slf4j.simpleLogger.defaultLogLevel>info</slf4j.simpleLogger.defaultLogLevel>-->
+<!--    <slf4j.simpleLogger.defaultLogLevel>error</slf4j.simpleLogger.defaultLogLevel>-->
   </properties>
 
   <dependencies>
@@ -38,24 +39,24 @@
       <scope>test</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.slf4j</groupId>                 <!-- для логування -->
-      <artifactId>slf4j-api</artifactId>
-      <version>2.0.9</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.slf4j</groupId>                 &lt;!&ndash; для логування &ndash;&gt;-->
+<!--      <artifactId>slf4j-api</artifactId>-->
+<!--      <version>2.0.9</version>-->
+<!--    </dependency>-->
 
-    <dependency>
-      <groupId>org.projectlombok</groupId>          <!-- для логування -->
-      <artifactId>lombok</artifactId>
-      <version>1.18.30</version>
-      <scope>provided</scope>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.projectlombok</groupId>          &lt;!&ndash; для логування &ndash;&gt;-->
+<!--      <artifactId>lombok</artifactId>-->
+<!--      <version>1.18.30</version>-->
+<!--      <scope>provided</scope>-->
+<!--    </dependency>-->
 
-    <dependency>
-      <groupId>ch.qos.logback</groupId>              <!-- для логування -->
-      <artifactId>logback-classic</artifactId>
-      <version>1.4.14</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>ch.qos.logback</groupId>              &lt;!&ndash; для логування &ndash;&gt;-->
+<!--      <artifactId>logback-classic</artifactId>-->
+<!--      <version>1.4.14</version>-->
+<!--    </dependency>-->
 
     <!-- для роботи з Json файлами -->
     <dependency>
@@ -100,6 +101,13 @@
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-java-commons</artifactId>
       <version>2.29.1</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-maven -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-maven</artifactId>
+      <version>2.15.2</version>
     </dependency>
 
   </dependencies>

@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.Random;
-import lombok.extern.slf4j.Slf4j;
+//import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-@Slf4j
+//@Slf4j
 public class BasePage {
 
 	private WebDriver driver;
@@ -58,7 +58,7 @@ public class BasePage {
 		try{
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(by));
-			log.info("The page with selector {} is loaded", by.toString());
+//			log.info("The page with selector {} is loaded", by.toString());
 		} catch (RuntimeException e) {
 			throw new RuntimeException(String.format("The page with %s selector DIDN'T loaded during %s seconds timeout", by, 10));
 		}
