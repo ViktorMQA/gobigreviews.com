@@ -1,4 +1,8 @@
 target/
+/.env.dev
+/.env.prod
+/.env.stage
+/allure-results/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

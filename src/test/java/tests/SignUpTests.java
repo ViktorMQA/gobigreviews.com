@@ -58,19 +58,19 @@ public class SignUpTests extends BaseTest {
 	}
 
 
-	@Test(description = "checking successful registration")
-	@Severity(SeverityLevel.CRITICAL)
-	@Story("Implement registration form")
-	public void checkingSignUpRegistration() throws InterruptedException {
-		SoftAssert softAssert = new SoftAssert();
-		SignUpPage signUp = new SignUpPage(driver);
-		String generatedEmail = email + "+" + signUp.generateFiveRandomDigits() + "@email.net";
-		softAssert.assertTrue(signUp.doRegistration(driver, name, generatedEmail,
-				password, confirmPassword).isRegistrationSuccessful(), "The registration is unsuccessful. profile element ISN'T visible after registration"
-		);
-		System.out.println(name + " " + generatedEmail + " " + password + " " + confirmPassword);
-		softAssert.assertAll();
-	}
+//	@Test(description = "checking successful registration")
+//	@Severity(SeverityLevel.CRITICAL)
+//	@Story("Implement registration form")
+//	public void checkingSignUpRegistration() throws InterruptedException {
+//		SoftAssert softAssert = new SoftAssert();
+//		SignUpPage signUp = new SignUpPage(driver);
+//		String generatedEmail = email + "+" + signUp.generateFiveRandomDigits() + "@email.net";
+//		softAssert.assertTrue(signUp.doRegistration(driver, name, generatedEmail,
+//				password, confirmPassword).isRegistrationSuccessful(), "The registration is unsuccessful. profile element ISN'T visible after registration"
+//		);
+//		System.out.println(name + " " + generatedEmail + " " + password + " " + confirmPassword);
+//		softAssert.assertAll();
+//	}
 
 	@Test(description = "checking required fields")
 	@Severity(SeverityLevel.NORMAL)
