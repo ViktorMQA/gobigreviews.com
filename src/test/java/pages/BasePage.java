@@ -1,5 +1,6 @@
 package pages;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -8,6 +9,9 @@ import java.util.Random;
 //import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -68,5 +72,37 @@ public class BasePage {
 	public void reloadPage(WebDriver driver){
 		driver.navigate().refresh();
 	}
+
+
+	public void checkElementDisplayed(WebElement element) {
+		if (!element.isDisplayed()) {
+			throw new AssertionError("Element is not displayed!");
+		}
+	}
+
+	public void checkElementClickable(WebElement element) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.elementToBeClickable(element));
+		} catch (TimeoutException e) {
+			throw new AssertionError("Element is not clickable!");
+		}
+	}
+
+	public void checkElementText(WebElement element, String expectedText) {
+		String actualText = element.getText().trim();
+		if (!actualText.equals(expectedText.trim())) {
+			throw new AssertionError("Text mismatch! Expected: '" + expectedText + "', but was: '" + actualText + "'");
+		}
+	}
+
+    // screen shot
+	File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+
+	// deep dive TestNG
+
+
+
+
 
 }
